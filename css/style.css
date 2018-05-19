@@ -1,0 +1,9 @@
+button {
+    outline: 0 !important;
+    border: none !important;
+}
+
+#loading {
+    display: none;
+    text-align: center;
+}
