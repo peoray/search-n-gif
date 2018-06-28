@@ -22,7 +22,7 @@ const getGif = (e) => {
   }
 
   fetch(
-      `http://api.giphy.com/v1/gifs/${data}?q=${searchTerm}&api_key=qIR90tuYNfH07iAKDNNHDwRH3qsdxLIa`
+      `https://api.giphy.com/v1/gifs/${data}?q=${searchTerm}&api_key=qIR90tuYNfH07iAKDNNHDwRH3qsdxLIa`
     )
     .then(res => res.json())
     .then(data => {
