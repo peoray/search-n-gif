@@ -18,24 +18,26 @@
     </nav>
     <div id="search-container" class="container">
         <div id="search" class="card card-body bg-light mb-2">
-            <h4>Search Giphy</h4>
+            <h4 class="display-4">Search Giphy</h4>
+            <hr>
             <form id="search-form">
+                <!-- <div class="form-check form-check-inline form-group"> -->
+                <h5>Sort By: </h5>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="sortby" value="search" id="search">
+                    <label class="form-check-label">
+                        Search
+                    </label>
+                </div>
+                <div class="form-check form-check-inline form-group">
+                    <input class="form-check-input" type="radio" name="sortby" value="trending" id="trending">
+                    <label class="form-check-label">
+                        Trending
+                    </label>
+                </div>
                 <div class="form-group">
                     <input type="text" id="search-input" class="form-control mb-3" placeholder="Search Term...">
                 </div>
-                <!-- <div class="form-check form-check-inline">
-                    Sort By:
-                    <input class="form-check-input ml-2" type="radio" name="sortby" value="relevance" checked>
-                    <label class="form-check-label">
-                        Relevance
-                    </label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="sortby" value="new">
-                    <label class="form-check-label">
-                        Latest
-                    </label>
-                </div> -->
                 <h5 class="mt-2">Limit: </h5>
                 <div class="form-group">
                     <select name="limit" id="limit" class="form-control">

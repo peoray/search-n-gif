@@ -1,12 +1,34 @@
+// document.getElementById('trending').addEventListener('click', () => {
+//   // e.preventDefault();
+//   document.getElementById("search-input").disabled = true;
+// });
+
+// document.getElementById('search').addEventListener('click', () => {
+//   // e.preventDefault();
+//   document.getElementById("search-input").disabled = false;
+// });
+
+
+let data;
+  // if (data.value === 'trending') {
+  //   document.getElementById("search-input").disabled = true;
+  // } else {
+  //   document.getElementById("search-input").disabled = false;
+  // }
 const getGif = (e) => {
+  const searchFalse = document.getElementById('search').disabled = false;
   const searchInput = document.getElementById("search-input");
   const searchTerm = searchInput.value;
   const searchLimit = document.getElementById("limit").value;
-  if (searchTerm === "") {
+  if (searchTerm === "" && searchFalse) {
     showMessage("Please fill in the search term", "alert-danger");
   }
+
+ let data = document.querySelector('input[name=sortby]:checked').value;
+  console.log(data);
+
   fetch(
-      `http://api.giphy.com/v1/gifs/search?q=${searchTerm}&api_key=qIR90tuYNfH07iAKDNNHDwRH3qsdxLIa&limit=${searchLimit}`
+      `http://api.giphy.com/v1/gifs/${data}?q=${searchTerm}&api_key=qIR90tuYNfH07iAKDNNHDwRH3qsdxLIa&limit=${searchLimit}`
     )
     .then(res => res.json())
     .then(data => {

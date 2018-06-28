@@ -1,9 +1,8 @@
 button {
-    outline: 0 !important;
-    border: none !important;
+  outline: 0 !important;
+  border: none !important;
 }
 
-#loading {
-    display: none;
-    text-align: center;
+hr {
+  width: 50%;
 }
