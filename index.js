@@ -1,31 +1,25 @@
-// document.getElementById('trending').addEventListener('click', () => {
-//   // e.preventDefault();
-//   document.getElementById("search-input").disabled = true;
-// });
+document.getElementsByName('sortby').forEach((radioButton) => {
+  // document.getElementById("search-input").focus();
+  radioButton.addEventListener('change', (event) => {
+    if (event.target.value === "trending") {
+      document.getElementById("search-input").disabled = true;
+    } else {
+      document.getElementById("search-input").disabled = false;
+      document.getElementById("search-input").focus();
+    }
+  });
+});
 
-// document.getElementById('search').addEventListener('click', () => {
-//   // e.preventDefault();
-//   document.getElementById("search-input").disabled = false;
-// });
-
-
-let data;
-  // if (data.value === 'trending') {
-  //   document.getElementById("search-input").disabled = true;
-  // } else {
-  //   document.getElementById("search-input").disabled = false;
-  // }
 const getGif = (e) => {
   const searchFalse = document.getElementById('search').disabled = false;
   const searchInput = document.getElementById("search-input");
   const searchTerm = searchInput.value;
   const searchLimit = document.getElementById("limit").value;
-  if (searchTerm === "" && searchFalse) {
+  let data = document.querySelector('input[name=sortby]:checked').value;
+
+  if (searchTerm === "" && data === "search") {
     showMessage("Please fill in the search term", "alert-danger");
   }
-
- let data = document.querySelector('input[name=sortby]:checked').value;
-  console.log(data);
 
   fetch(
       `http://api.giphy.com/v1/gifs/${data}?q=${searchTerm}&api_key=qIR90tuYNfH07iAKDNNHDwRH3qsdxLIa&limit=${searchLimit}`
@@ -69,7 +63,6 @@ const showMessage = (message, className) => {
   }, 3000);
 };
 
-// document.getElementById("search-form").addEventListener("submit", getGif);
 document.getElementById("search-form").addEventListener("submit", getGif);
 
 // https://dev.to/hitman666/getting-started-with-vuejs-2-by-building-a-giphy-search-application-2co3
