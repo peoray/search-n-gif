@@ -14,7 +14,7 @@ const getGif = (e) => {
   const searchFalse = document.getElementById('search').disabled = false;
   const searchInput = document.getElementById("search-input");
   const searchTerm = searchInput.value;
-  const searchLimit = document.getElementById("limit").value;
+  // const = searchLimit = document.getElementById("limit").value;
   let data = document.querySelector('input[name=sortby]:checked').value;
 
   if (searchTerm === "" && data === "search") {
@@ -22,7 +22,7 @@ const getGif = (e) => {
   }
 
   fetch(
-      `http://api.giphy.com/v1/gifs/${data}?q=${searchTerm}&api_key=qIR90tuYNfH07iAKDNNHDwRH3qsdxLIa&limit=${searchLimit}`
+      `http://api.giphy.com/v1/gifs/${data}?q=${searchTerm}&api_key=qIR90tuYNfH07iAKDNNHDwRH3qsdxLIa`
     )
     .then(res => res.json())
     .then(data => {
