@@ -5,15 +5,13 @@ const getGif = (e) => {
   if (searchTerm === "") {
     showMessage("Please fill in the search term", "alert-danger");
   }
-
   fetch(
-    `http://api.giphy.com/v1/gifs/search?q=${searchTerm}&api_key=qIR90tuYNfH07iAKDNNHDwRH3qsdxLIa&limit=${searchLimit}`
-  )
+      `http://api.giphy.com/v1/gifs/search?q=${searchTerm}&api_key=qIR90tuYNfH07iAKDNNHDwRH3qsdxLIa&limit=${searchLimit}`
+    )
     .then(res => res.json())
     .then(data => {
       let output = '<div class="container">';
       data.data.forEach(item => {
-        console.log(item.images.original.url);
         output += `
             <div class="row">
                 <div class="col-md-3>
@@ -26,7 +24,7 @@ const getGif = (e) => {
             </div>
             `;
       });
-      output += "</div>";
+      output += '</div>';
       document.getElementById("results").innerHTML = output;
     })
     .catch(error => console.log(error));
@@ -50,11 +48,6 @@ const showMessage = (message, className) => {
 };
 
 // document.getElementById("search-form").addEventListener("submit", getGif);
-document.getElementById("search-form").addEventListener("submit", (e) => {
-  //show loader
-  document.getElementById("loading").style.display = "block";
-  setTimeout(getGif, 3000);
+document.getElementById("search-form").addEventListener("submit", getGif);
 
-  e.preventDefault();
-});
-
+// https://dev.to/hitman666/getting-started-with-vuejs-2-by-building-a-giphy-search-application-2co3
