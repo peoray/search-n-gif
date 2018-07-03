@@ -48,7 +48,7 @@ const getGif = e => {
     })
     .catch(error => console.log(error));
 
-  searchTerm.value = "";
+  document.getElementById("search-input").value = '';
 
   e.preventDefault();
 };
