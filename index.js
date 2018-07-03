@@ -1,6 +1,6 @@
-document.getElementsByName('sortby').forEach((radioButton) => {
+document.getElementsByName("sortby").forEach(radioButton => {
   // document.getElementById("search-input").focus();
-  radioButton.addEventListener('change', (event) => {
+  radioButton.addEventListener("change", event => {
     if (event.target.value === "trending") {
       document.getElementById("search-input").disabled = true;
     } else {
@@ -10,22 +10,25 @@ document.getElementsByName('sortby').forEach((radioButton) => {
   });
 });
 
-const getGif = (e) => {
-  const searchFalse = document.getElementById('search').disabled = false;
+const getGif = e => {
+  const searchFalse = (document.getElementById("search").disabled = false);
   const searchInput = document.getElementById("search-input");
   const searchTerm = searchInput.value;
   const searchLimit = document.getElementById("limit").value;
-  let data = document.querySelector('input[name=sortby]:checked').value;
+  let data = document.querySelector("input[name=sortby]:checked").value;
 
   if (searchTerm === "" && data === "search") {
     showMessage("Please fill in the search term", "alert-danger");
   }
 
+  document.getElementById("loader").style.display = "block";
+
   fetch(
-      `https://api.giphy.com/v1/gifs/${data}?q=${searchTerm}&api_key=qIR90tuYNfH07iAKDNNHDwRH3qsdxLIa&limit=${searchLimit}`
-    )
+    `https://api.giphy.com/v1/gifs/${data}?q=${searchTerm}&api_key=qIR90tuYNfH07iAKDNNHDwRH3qsdxLIa&limit=${searchLimit}`
+  )
     .then(res => res.json())
     .then(data => {
+      document.getElementById("loader").style.display = "none";
       let output = '<div class="container">';
       data.data.forEach(item => {
         output += `
@@ -40,7 +43,7 @@ const getGif = (e) => {
             </div>
             `;
       });
-      output += '</div>';
+      output += "</div>";
       document.getElementById("results").innerHTML = output;
     })
     .catch(error => console.log(error));

@@ -6,3 +6,7 @@ button {
 hr {
   width: 50%;
 }
+
+#loader {
+  display: none;
+}
